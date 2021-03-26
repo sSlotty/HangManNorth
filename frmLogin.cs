@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Data.OleDb;
+using Hangman.Extension;
 namespace Hangman
 {
     public partial class frmLogin : Form
     {
+        string ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\db_user.mdb;";
+
         public static frmRegister frmRegister = new frmRegister();
         public frmLogin()
         {
@@ -27,7 +30,56 @@ namespace Hangman
 
         private void pictureBox5_Click(object sender, EventArgs e)
         {
-           // Function Login
+            // Function Login
+            var password = txtPassword.Text.GetSHA256HashString();
+            login(txtUsername.Text, password);
+        }
+
+        private void login(string username, string password)
+        {
+            try
+            {
+
+
+                using (OleDbConnection con = new OleDbConnection(ConnectionString))
+                {
+                    con.Open();
+                    var sql = $"SELECT [ID], [username],[password],[point] FROM [tbl_users] WHERE username=?";
+                    var cmd = new OleDbCommand(sql, con);
+                    cmd.Parameters.Add("?", OleDbType.VarChar).Value = username;
+
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var usernameRes = reader.GetString(1);
+                        var passwordRes = reader.GetString(2);
+                        var point = reader.GetInt32(3);
+                        
+                        if (username == usernameRes && password == passwordRes)
+                        {
+                            User member = new User();
+                            member.setUsername(usernameRes);
+                            member.setPoint(point);
+
+                            this.Hide();
+                            new frmHome().Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Username or password incorrect!");
+                        }
+                    }
+                    reader.Close();
+                    cmd.Dispose();
+                    con.Close();
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
         }
 
 
