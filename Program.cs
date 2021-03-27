@@ -20,6 +20,7 @@ namespace Hangman
             Application.Run(new frmLogin());
             Console.WriteLine("Oat push");
             Console.WriteLine("mook");
+            Console.WriteLine("Oat push 2");
         }
     }
 }
