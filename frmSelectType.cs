@@ -10,6 +10,10 @@ namespace Hangman
 {
     public partial class frmSelectType : Form
     {
+        public enum Type {
+            TRAVEL,
+            FOOD
+        }
         public static frmLogin frmLogin = new frmLogin();
         public frmSelectType()
         {
@@ -26,7 +30,10 @@ namespace Hangman
 
         private void travel_Click(object sender, EventArgs e)
         {
-
+            playGame pg = new playGame();
+            pg.setType("TRAVEL");
+            this.Hide();
+            pg.Show();
         }
 
         private void language_Click(object sender, EventArgs e)

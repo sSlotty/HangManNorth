@@ -36,6 +36,7 @@ namespace Hangman
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.titleType = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -86,6 +87,7 @@ namespace Hangman
             this.textBox1.PlaceholderText = "Answer";
             this.textBox1.Size = new System.Drawing.Size(544, 73);
             this.textBox1.TabIndex = 3;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -113,11 +115,23 @@ namespace Hangman
             this.pictureBox4.TabIndex = 5;
             this.pictureBox4.TabStop = false;
             // 
+            // titleType
+            // 
+            this.titleType.AutoSize = true;
+            this.titleType.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.titleType.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.titleType.Location = new System.Drawing.Point(675, 23);
+            this.titleType.Name = "titleType";
+            this.titleType.Size = new System.Drawing.Size(0, 32);
+            this.titleType.TabIndex = 6;
+            this.titleType.Click += new System.EventHandler(this.label2_Click);
+            // 
             // playGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.titleType);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
@@ -144,5 +158,6 @@ namespace Hangman
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label titleType;
     }
 }
