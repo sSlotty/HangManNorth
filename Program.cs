@@ -18,6 +18,7 @@ namespace Hangman
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmLogin());
+            Console.WriteLine("Oat push");
         }
     }
 }
