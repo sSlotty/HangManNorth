@@ -21,6 +21,7 @@ namespace Hangman
             Console.WriteLine("Oat push");
             Console.WriteLine("mook");
             Console.WriteLine("Oat push 2");
+            Console.WriteLine("Prayfa Push");
         }
     }
 }
