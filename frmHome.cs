@@ -19,7 +19,8 @@ namespace Hangman
             playGameBtn.BackColor = Color.FromArgb(53, 36, 2);
             scoreBtn.BackColor = Color.FromArgb(53, 36, 2);
             rultBtn.BackColor = Color.FromArgb(255,246,224);
-
+            
+           
 
         }
 

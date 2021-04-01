@@ -16,7 +16,13 @@ namespace Hangman
         //OleDbConnection con;
         //OleDbCommand cmd;
         //OleDbDataAdapter da;
-        string ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\db_user.mdb;";
+        static string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+        static string[] words = path.Split(@"\");
+        static string fixpath = words[0] + @"\" + words[1] + @"\" + words[2] + @"\";
+
+        string ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source="+ fixpath +"db_user.mdb;";
+
+   
 
         public static frmLogin frmLogin = new frmLogin();
         public frmRegister()
@@ -24,7 +30,7 @@ namespace Hangman
             InitializeComponent();
             this.CenterToScreen();
             //con = new OleDbConnection(ConnectionString);
-
+ 
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

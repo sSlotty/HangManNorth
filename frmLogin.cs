@@ -13,7 +13,14 @@ namespace Hangman
 {
     public partial class frmLogin : Form
     {
-        string ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\db_user.mdb;";
+        public static string user = "";
+        public static int point;
+
+        static string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+        static string[] words = path.Split(@"\");
+        static string fixpath = words[0] + @"\" + words[1] + @"\" + words[2] + @"\";
+
+        string ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + fixpath + "db_user.mdb;";
 
         public static frmRegister frmRegister = new frmRegister();
         public frmLogin()
@@ -57,10 +64,9 @@ namespace Hangman
                         
                         if (username == usernameRes && password == passwordRes)
                         {
-                            User member = new User();
-                            member.setUsername(usernameRes);
-                            member.setPoint(point);
 
+                            user = username;
+                            point = point;
                             this.Hide();
                             new frmHome().Show();
                         }

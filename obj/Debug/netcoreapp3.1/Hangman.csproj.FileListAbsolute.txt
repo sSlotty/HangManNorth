@@ -40,3 +40,9 @@ D:\Project\Hangman\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Syste
 D:\Project\Hangman\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 D:\Project\Hangman\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 D:\Project\Hangman\obj\Debug\netcoreapp3.1\Hangman.csproj.CopyComplete
+D:\Project\Hangman\bin\Debug\netcoreapp3.1\JObject.dll
+D:\Project\Hangman\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Project\Hangman\obj\Debug\netcoreapp3.1\Hangman.frmHome.resources
+D:\Project\Hangman\obj\Debug\netcoreapp3.1\Hangman.frmRule.resources
+D:\Project\Hangman\obj\Debug\netcoreapp3.1\Hangman.frmScoreTotal.resources
+D:\Project\Hangman\obj\Debug\netcoreapp3.1\Hangman.Properties.Resource1.resources

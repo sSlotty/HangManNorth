@@ -6,27 +6,15 @@ namespace Hangman
 {
     class User
     {
-        string username = null;
-        int point = 0;
+        public static string username = "";
+        public static int point;
 
-        public void setPoint(int point)
-        {
-            this.point = point;
-        }
+        public void setPoint(int point) => _ = point;
 
-        public void setUsername(string username)
-        {
-            this.username = username;
-        }
-        public int getPoint()
-        {
-            return this.point;
-        }
+        public void setUsername(string username) => _ = username;
+        public int getPoint() => point;
 
-        public string getUsername()
-        {
-            return this.username;
-        }
+        public string getUsername() => username;
 
     }
 }

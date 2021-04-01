@@ -17,10 +17,8 @@ namespace Hangman
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
-            Console.WriteLine("Oat push");
-            Console.WriteLine("mook");
-            Console.WriteLine("Oat push 2");
+            Application.Run(new frmHome());
+            
         }
     }
 }
