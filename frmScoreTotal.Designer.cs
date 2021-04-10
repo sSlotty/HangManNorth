@@ -30,27 +30,29 @@ namespace Hangman
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmScoreTotal));
-            this.label1 = new System.Windows.Forms.Label();
+            this.TextScore = new System.Windows.Forms.Label();
             this.backBtn = new System.Windows.Forms.PictureBox();
             this.exitBtn = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.backBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exitBtn)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // TextScore
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(564, 280);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(165, 61);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.TextScore.AutoSize = true;
+            this.TextScore.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.TextScore.Font = new System.Drawing.Font("Trebuchet MS", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TextScore.Location = new System.Drawing.Point(564, 280);
+            this.TextScore.Name = "TextScore";
+            this.TextScore.Size = new System.Drawing.Size(165, 61);
+            this.TextScore.TabIndex = 0;
+            this.TextScore.Text = "label1";
+            this.TextScore.Click += new System.EventHandler(this.TextScore_Click);
             // 
             // backBtn
             // 
             this.backBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.backBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.backBtn.Image = ((System.Drawing.Image)(resources.GetObject("backBtn.Image")));
             this.backBtn.Location = new System.Drawing.Point(1142, 34);
             this.backBtn.Name = "backBtn";
@@ -62,6 +64,7 @@ namespace Hangman
             // exitBtn
             // 
             this.exitBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.exitBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.exitBtn.Image = ((System.Drawing.Image)(resources.GetObject("exitBtn.Image")));
             this.exitBtn.Location = new System.Drawing.Point(1200, 12);
             this.exitBtn.Name = "exitBtn";
@@ -78,7 +81,7 @@ namespace Hangman
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.exitBtn);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.TextScore);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmScoreTotal";
             this.Text = "Form1";
@@ -91,7 +94,7 @@ namespace Hangman
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label TextScore;
         private System.Windows.Forms.PictureBox backBtn;
         private System.Windows.Forms.PictureBox exitBtn;
     }
