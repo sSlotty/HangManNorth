@@ -9,15 +9,30 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
 using Hangman.Extension;
+using Hangman.Services;
+
 namespace Hangman
 {
     public partial class frmLogin : Form
     {
-        string ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\db_user.mdb;";
+        public static string user = "";
+        public static int point;
+
+        static string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+        static string[] words = path.Split(@"\");
+        static string fixpath = words[0] + @"\" + words[1] + @"\" + words[2] + @"\";
+
+        string ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + fixpath + "db_user.mdb;";
 
         public static frmRegister frmRegister = new frmRegister();
+
+        private readonly IUserService _userService;
+        private static System.Timers.Timer aTimer;
+
+
         public frmLogin()
         {
+            _userService = (IUserService)Program.ServiceProvider.GetService(typeof(IUserService));
             InitializeComponent();
             this.CenterToScreen();
 
@@ -32,15 +47,27 @@ namespace Hangman
         {
             // Function Login
             var password = txtPassword.Text.GetSHA256HashString();
-            login(txtUsername.Text, password);
+            var result = login(txtUsername.Text, password);
+
+            if (result)
+            {
+                MessageBox.Show("login !!");
+                this.Hide();
+                new frmHome().Show();
+            }
+            else
+            {
+                MessageBox.Show("Username or password incorrect!");
+                txtPassword.Text = "";
+                txtUsername.Text = "";
+
+            }
         }
 
-        private void login(string username, string password)
+        private bool login(string username, string password)
         {
             try
             {
-
-
                 using (OleDbConnection con = new OleDbConnection(ConnectionString))
                 {
                     con.Open();
@@ -57,28 +84,32 @@ namespace Hangman
                         
                         if (username == usernameRes && password == passwordRes)
                         {
-                            User member = new User();
-                            member.setUsername(usernameRes);
-                            member.setPoint(point);
+                            _userService.SetUsername(username);
+                            _userService.SetUserScore(point);
 
-                            this.Hide();
-                            new frmHome().Show();
+                            return true;
                         }
                         else
                         {
-                            MessageBox.Show("Username or password incorrect!");
+                            
+                            return false;
                         }
                     }
                     reader.Close();
                     cmd.Dispose();
                     con.Close();
+                   
                 }
 
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
+                MessageBox.Show(e.ToString());
+                return false;
             }
+
+            return false;
 
         }
 

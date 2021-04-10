@@ -46,6 +46,7 @@ namespace Hangman
             // 
             // travel
             // 
+            this.travel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.travel.Image = ((System.Drawing.Image)(resources.GetObject("travel.Image")));
             this.travel.Location = new System.Drawing.Point(230, 256);
             this.travel.Name = "travel";
@@ -56,6 +57,7 @@ namespace Hangman
             // 
             // language
             // 
+            this.language.Cursor = System.Windows.Forms.Cursors.Hand;
             this.language.Image = ((System.Drawing.Image)(resources.GetObject("language.Image")));
             this.language.Location = new System.Drawing.Point(704, 256);
             this.language.Name = "language";
@@ -66,6 +68,7 @@ namespace Hangman
             // 
             // food
             // 
+            this.food.Cursor = System.Windows.Forms.Cursors.Hand;
             this.food.Image = ((System.Drawing.Image)(resources.GetObject("food.Image")));
             this.food.Location = new System.Drawing.Point(230, 352);
             this.food.Name = "food";
@@ -76,6 +79,7 @@ namespace Hangman
             // 
             // culture
             // 
+            this.culture.Cursor = System.Windows.Forms.Cursors.Hand;
             this.culture.Image = ((System.Drawing.Image)(resources.GetObject("culture.Image")));
             this.culture.Location = new System.Drawing.Point(704, 352);
             this.culture.Name = "culture";
@@ -86,6 +90,7 @@ namespace Hangman
             // 
             // backBtn
             // 
+            this.backBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.backBtn.Image = ((System.Drawing.Image)(resources.GetObject("backBtn.Image")));
             this.backBtn.Location = new System.Drawing.Point(1154, 12);
             this.backBtn.Name = "backBtn";
@@ -96,6 +101,7 @@ namespace Hangman
             // 
             // exitBtn
             // 
+            this.exitBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.exitBtn.Image = ((System.Drawing.Image)(resources.GetObject("exitBtn.Image")));
             this.exitBtn.Location = new System.Drawing.Point(1205, -13);
             this.exitBtn.Name = "exitBtn";

@@ -37,11 +37,13 @@ namespace Hangman
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
+            this.successBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Submit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.successBox)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -120,12 +122,25 @@ namespace Hangman
             this.txtPassword.TabIndex = 13;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
+            // successBox
+            // 
+            this.successBox.BackColor = System.Drawing.Color.Transparent;
+            this.successBox.Image = ((System.Drawing.Image)(resources.GetObject("successBox.Image")));
+            this.successBox.Location = new System.Drawing.Point(694, 203);
+            this.successBox.Name = "successBox";
+            this.successBox.Size = new System.Drawing.Size(442, 181);
+            this.successBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.successBox.TabIndex = 14;
+            this.successBox.TabStop = false;
+            this.successBox.Visible = false;
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.Controls.Add(this.successBox);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox3);
@@ -142,6 +157,7 @@ namespace Hangman
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.successBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -156,6 +172,7 @@ namespace Hangman
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.PictureBox successBox;
     }
 }
 

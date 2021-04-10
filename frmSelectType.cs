@@ -10,11 +10,7 @@ namespace Hangman
 {
     public partial class frmSelectType : Form
     {
-        public enum Type {
-            TRAVEL,
-            FOOD
-        }
-        public static frmLogin frmLogin = new frmLogin();
+        public static string type;
         public frmSelectType()
         {
             InitializeComponent();
@@ -25,29 +21,37 @@ namespace Hangman
             culture.BackColor = Color.FromArgb(157, 210, 255);
             exitBtn.BackColor = Color.FromArgb(157, 210, 255);
             backBtn.BackColor = Color.FromArgb(157, 210, 255);
-
+            type = "";
         }
 
         private void travel_Click(object sender, EventArgs e)
         {
-            playGame pg = new playGame();
-            pg.setType("TRAVEL");
+            type = "travel";
             this.Hide();
-            pg.Show();
+            new playGame().Show();
         }
 
         private void language_Click(object sender, EventArgs e)
         {
+            type = "language";
+            this.Hide();
+            new playGame().Show();
 
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            type = "food";
+            this.Hide();
+            new playGame().Show();
 
         }
 
         private void culture_Click(object sender, EventArgs e)
         {
+            type = "culture";
+            this.Hide();
+            new playGame().Show();
 
         }
 
@@ -69,7 +73,7 @@ namespace Hangman
         private void backBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmLogin.Show();
+            new frmHome().Show();
             
         }
     }

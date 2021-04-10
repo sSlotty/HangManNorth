@@ -72,6 +72,7 @@ namespace Hangman
             this.scoreBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.scoreBtn.TabIndex = 2;
             this.scoreBtn.TabStop = false;
+            this.scoreBtn.Click += new System.EventHandler(this.scoreBtn_Click_1);
             // 
             // exitBtn
             // 
