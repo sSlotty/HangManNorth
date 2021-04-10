@@ -39,6 +39,7 @@ namespace Hangman
             // backBtn
             // 
             this.backBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.backBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.backBtn.Image = ((System.Drawing.Image)(resources.GetObject("backBtn.Image")));
             this.backBtn.Location = new System.Drawing.Point(1142, 34);
             this.backBtn.Name = "backBtn";
@@ -50,6 +51,7 @@ namespace Hangman
             // exitBtn
             // 
             this.exitBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.exitBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.exitBtn.Image = ((System.Drawing.Image)(resources.GetObject("exitBtn.Image")));
             this.exitBtn.Location = new System.Drawing.Point(1200, 12);
             this.exitBtn.Name = "exitBtn";

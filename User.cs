@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Hangman
 {
-    class User
+    public class User
     {
         public static string username = "";
         public static int point;

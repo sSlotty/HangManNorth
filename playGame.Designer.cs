@@ -34,14 +34,27 @@ namespace Hangman
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.TextAns = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.TextPoint = new System.Windows.Forms.Label();
             this.submitBox = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.pic1 = new System.Windows.Forms.PictureBox();
+            this.pic2 = new System.Windows.Forms.PictureBox();
+            this.pic3 = new System.Windows.Forms.PictureBox();
+            this.pic4 = new System.Windows.Forms.PictureBox();
+            this.pic5 = new System.Windows.Forms.PictureBox();
+            this.pic6 = new System.Windows.Forms.PictureBox();
+            this.pic7 = new System.Windows.Forms.PictureBox();
+            this.TextHint = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.submitBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic7)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -90,20 +103,17 @@ namespace Hangman
             this.TextAns.PlaceholderText = "Answer";
             this.TextAns.Size = new System.Drawing.Size(544, 73);
             this.TextAns.TabIndex = 3;
-            this.TextAns.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // label1
+            // TextPoint
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.label1.Font = new System.Drawing.Font("Tw Cen MT Condensed Extra Bold", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label1.Location = new System.Drawing.Point(291, 548);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(236, 114);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "1000";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.TextPoint.AutoSize = true;
+            this.TextPoint.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.TextPoint.Font = new System.Drawing.Font("Tw Cen MT Condensed Extra Bold", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TextPoint.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.TextPoint.Location = new System.Drawing.Point(291, 548);
+            this.TextPoint.Name = "TextPoint";
+            this.TextPoint.Size = new System.Drawing.Size(0, 114);
+            this.TextPoint.TabIndex = 4;
             // 
             // submitBox
             // 
@@ -117,39 +127,113 @@ namespace Hangman
             this.submitBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.submitBox.TabIndex = 5;
             this.submitBox.TabStop = false;
-            this.submitBox.Click += new System.EventHandler(this.pictureBox4_Click);
+            this.submitBox.Click += new System.EventHandler(this.submitBox_Click);
             // 
-            // label2
+            // pic1
             // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(675, 91);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 45);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "label2";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.pic1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pic1.Image = ((System.Drawing.Image)(resources.GetObject("pic1.Image")));
+            this.pic1.Location = new System.Drawing.Point(109, 60);
+            this.pic1.Name = "pic1";
+            this.pic1.Size = new System.Drawing.Size(445, 442);
+            this.pic1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pic1.TabIndex = 7;
+            this.pic1.TabStop = false;
+            this.pic1.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
-            // textBox2
+            // pic2
             // 
-            this.textBox2.Location = new System.Drawing.Point(87, 83);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox2.Size = new System.Drawing.Size(440, 413);
-            this.textBox2.TabIndex = 7;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.pic2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pic2.Image = ((System.Drawing.Image)(resources.GetObject("pic2.Image")));
+            this.pic2.Location = new System.Drawing.Point(109, 60);
+            this.pic2.Name = "pic2";
+            this.pic2.Size = new System.Drawing.Size(445, 442);
+            this.pic2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pic2.TabIndex = 8;
+            this.pic2.TabStop = false;
+            // 
+            // pic3
+            // 
+            this.pic3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pic3.Image = ((System.Drawing.Image)(resources.GetObject("pic3.Image")));
+            this.pic3.Location = new System.Drawing.Point(109, 60);
+            this.pic3.Name = "pic3";
+            this.pic3.Size = new System.Drawing.Size(445, 442);
+            this.pic3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pic3.TabIndex = 9;
+            this.pic3.TabStop = false;
+            // 
+            // pic4
+            // 
+            this.pic4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pic4.Image = ((System.Drawing.Image)(resources.GetObject("pic4.Image")));
+            this.pic4.Location = new System.Drawing.Point(109, 60);
+            this.pic4.Name = "pic4";
+            this.pic4.Size = new System.Drawing.Size(445, 442);
+            this.pic4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pic4.TabIndex = 10;
+            this.pic4.TabStop = false;
+            // 
+            // pic5
+            // 
+            this.pic5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pic5.Image = ((System.Drawing.Image)(resources.GetObject("pic5.Image")));
+            this.pic5.Location = new System.Drawing.Point(109, 60);
+            this.pic5.Name = "pic5";
+            this.pic5.Size = new System.Drawing.Size(445, 442);
+            this.pic5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pic5.TabIndex = 11;
+            this.pic5.TabStop = false;
+            // 
+            // pic6
+            // 
+            this.pic6.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pic6.Image = ((System.Drawing.Image)(resources.GetObject("pic6.Image")));
+            this.pic6.Location = new System.Drawing.Point(109, 60);
+            this.pic6.Name = "pic6";
+            this.pic6.Size = new System.Drawing.Size(445, 442);
+            this.pic6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pic6.TabIndex = 12;
+            this.pic6.TabStop = false;
+            // 
+            // pic7
+            // 
+            this.pic7.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pic7.Image = ((System.Drawing.Image)(resources.GetObject("pic7.Image")));
+            this.pic7.Location = new System.Drawing.Point(109, 60);
+            this.pic7.Name = "pic7";
+            this.pic7.Size = new System.Drawing.Size(445, 442);
+            this.pic7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pic7.TabIndex = 13;
+            this.pic7.TabStop = false;
+            // 
+            // TextHint
+            // 
+            this.TextHint.AutoSize = true;
+            this.TextHint.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.TextHint.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TextHint.Location = new System.Drawing.Point(708, 106);
+            this.TextHint.Name = "TextHint";
+            this.TextHint.Size = new System.Drawing.Size(90, 37);
+            this.TextHint.TabIndex = 14;
+            this.TextHint.Text = "label1";
+            this.TextHint.Click += new System.EventHandler(this.TextHint_Click);
             // 
             // playGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1264, 681);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.TextHint);
+            this.Controls.Add(this.pic7);
+            this.Controls.Add(this.pic6);
+            this.Controls.Add(this.pic5);
+            this.Controls.Add(this.pic4);
+            this.Controls.Add(this.pic3);
+            this.Controls.Add(this.pic2);
+            this.Controls.Add(this.pic1);
             this.Controls.Add(this.submitBox);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.TextPoint);
             this.Controls.Add(this.TextAns);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
@@ -161,6 +245,13 @@ namespace Hangman
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.submitBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,9 +263,15 @@ namespace Hangman
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.TextBox TextAns;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label TextPoint;
         private System.Windows.Forms.PictureBox submitBox;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.PictureBox pic1;
+        private System.Windows.Forms.PictureBox pic2;
+        private System.Windows.Forms.PictureBox pic3;
+        private System.Windows.Forms.PictureBox pic4;
+        private System.Windows.Forms.PictureBox pic5;
+        private System.Windows.Forms.PictureBox pic6;
+        private System.Windows.Forms.PictureBox pic7;
+        private System.Windows.Forms.Label TextHint;
     }
 }

@@ -20,7 +20,6 @@ namespace Hangman
             scoreBtn.BackColor = Color.FromArgb(53, 36, 2);
             rultBtn.BackColor = Color.FromArgb(255,246,224);
             
-           
 
         }
 
@@ -50,6 +49,12 @@ namespace Hangman
         {
             this.Hide();
             new frmSelectType().Show();
+        }
+
+        private void scoreBtn_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+            new frmScoreTotal().Show();
         }
     }
 }

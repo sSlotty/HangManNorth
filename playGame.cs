@@ -8,113 +8,278 @@ using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Data.OleDb;
+using Hangman.Services;
 
 namespace Hangman
 {
+    
     public partial class playGame : Form
     {
+
+
         static string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
         static string[] words = path.Split(@"\");
-        static string fixpath = words[0] + @"\" + words[1] + @"\" + words[2] + @"\data.json";
+        static string fixpath = words[0] + @"\" + words[1] + @"\" + words[2] + @"\";
 
-        private string[] ArrayAns,ArrayHint;
+        string ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + fixpath + "db_user.mdb;";
+
+        public List<string> allQuestion;
+        public List<string> allAnswer;
+
+        private List<int> questionSuffer;
+        private readonly int QUESTION_NUM = 10;
 
         private int round = 0;
-        private int sumpoint = 0;
-        int timeLeft = 60;
-        int oldRandTip;
+        private int sumpoint ,question_num= 0;
+        private int point = 0;
+        int time = 60;
         bool gameOver = false;
 
         private string answser,hint;
 
+        private readonly IUserService _userService;
         public playGame()
         {
+            _userService = (IUserService)Program.ServiceProvider.GetService(typeof(IUserService));
             InitializeComponent();
             this.CenterToScreen();
-            readAns();
-            readHint();
+            JsonReadQuestion(frmSelectType.type);
+            TextHint.MaximumSize = new Size(300, 0);
+            TextHint.AutoSize = true;
+            resetHuman();
             startGame();
-           
+
         }
         private void startGame()
         {
-            gameOver = false;
-            while (!gameOver)
+            
+            if (!gameOver)
             {
-                randomChoice();
-            }
+                if(question_num <= 9)
+                {
+                    sufferQuestion();
+                    if (round < 6)
+                    {
+                        TextHint.Text = hint;
+                        
 
+                    }
+                    else
+                    {
 
-        }
-       private void readAns()
-        {
-            char[] delimiterChars = { ',' };
-            string[] readText = File.ReadAllLines("travel.csv");
-            ArrayAns = new string[readText.Length];
-
-
-            int index = 0;
-            foreach (string s in readText)
-            {
-                string[] line = s.Split(delimiterChars);
-                ArrayAns[index++] = line[1];
+                        MessageBox.Show("Game Over your score : " + this.sumpoint.ToString());
+                        saveScore();
+                        this.Close();
+                        new frmHome().Show();
+                        
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("End game your score : " + this.sumpoint.ToString());
+                    saveScore();
+                    this.Close();
+                    new frmHome().Show();
               
+                }
 
             }
+            else
+            {
+                saveScore();
+                this.Close();
+                MessageBox.Show("Game Over your score : " + this.sumpoint.ToString());
+                new frmHome().Show();
+                
+
+            }
+
         }
 
-        private void readHint()
+        public void sufferQuestion()
         {
-            char[] delimiterChars = { ',' };
-            string[] readText = File.ReadAllLines("travel.csv");
-            ArrayHint = new string[readText.Length];
+            var rand = new Random();
+            var r = rand.Next(0, allAnswer.Count);
+            questionSuffer.Add(r);
+            answser = allAnswer[r].ToString();
+            hint = allQuestion[r].ToString();
+            allAnswer.RemoveAt(r);
+            allQuestion.RemoveAt(r);
+            question_num++;
+        }
 
 
-            int index = 0;
-            foreach (string s in readText)
+        private void JsonReadQuestion(string type)
+        {
+            allQuestion = new List<string>();
+            allAnswer = new List<string>();
+            
+            questionSuffer = new List<int>();
+
+            var jsonFile = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\data\data.json";
+            var jsonString = File.ReadAllText(jsonFile);
+            
+            var data = JObject.Parse(jsonString);
+
+            for(int i = 0; i < QUESTION_NUM; i++)
             {
-                string[] line = s.Split(delimiterChars);
-                ArrayHint[index++] = line[2];
+                allQuestion.Add(data[type][i]["hint"].ToString());
+                allAnswer.Add(data[type][i]["answer"].ToString());
+            }
+            
+             
+        }
+
+     
+
+        private void submitBox_Click(object sender, EventArgs e)
+        {
+            if(this.round < 7)
+            {
+                checkAnswer(TextAns.Text);
+
+            }
+            else
+            {
+               
+                this.sumpoint = point + _userService.GetUserScore();
+                saveScore();
+                _userService.SetUserScore(sumpoint);
+                this.gameOver = true;
+                MessageBox.Show("Game Over your score : " + this.sumpoint.ToString());
+                this.Close();
+                new frmHome().Show();
                 
 
             }
         }
 
-        private void randomChoice()
+        public void checkAnswer(string ans)
         {
-            var rand = new Random();
-            int tip = rand.Next(0, ArrayAns.Length);
-            while(oldRandTip == tip)
+            if (ans.Equals(answser))
             {
-                tip = rand.Next(0, ArrayAns.Length);
+                MessageBox.Show("Correct Answer");
+                startGame();
+                TextAns.Text = "";
+                this.round = 0;
+                point = point + 1;
+                TextPoint.Text = point.ToString();
+                resetHuman();
+            }
+            else
+            {
+                round++;
+                
+                switch (round)
+                {
+                    case 1:
+                        pic1.Visible = true;
+                        break;
+                    case 2:
+                        pic1.Visible = false;
+                        pic2.Visible = true;
+                        break;
+                    case 3:
+                        pic2.Visible = false;
+                        pic3.Visible = true;
+                        break;
+                    case 4:
+                        pic3.Visible = false;
+                        pic4.Visible = true;
+                        break;
+                    case 5:
+                        pic4.Visible = false;
+                        pic5.Visible = true;
+                        break;
+                    case 6:
+                        pic5.Visible = false;
+                        pic6.Visible = true;
+                        break;
+                    case 7:
+                        pic6.Visible = false;
+                        pic7.Visible = true;
+                        break;
+                }
+
+            }
+   
+          }
+
+        private void saveScore()
+        {
+            try
+            {
+
+
+                using (OleDbConnection con = new OleDbConnection(ConnectionString))
+                {
+                    con.Open();
+                    var sql = $"UPDATE [tbl_users] SET point = @point WHERE username= @username";
+                    var cmd = new OleDbCommand(sql, con);
+                    cmd.Parameters.Add("@point", OleDbType.Integer).Value = this.sumpoint;
+                    cmd.Parameters.Add("@username", OleDbType.VarChar).Value = _userService.GetUsername();
+                    
+                    cmd.ExecuteNonQuery();
+                    cmd.Dispose();
+                    con.Close();
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
             }
 
-            answser = ArrayAns[tip];
-            hint = ArrayHint[tip];
-            label2.Text = hint;
-            oldRandTip = tip;
-            TextAns.Text = String.Empty;
+            
+
         }
 
+        public void resetHuman()
+        {
+            pic1.Visible = false;
+            pic2.Visible = false;
+            pic3.Visible = false;
+            pic4.Visible = false;
+            pic5.Visible = false;
+            pic6.Visible = false;
+            pic7.Visible = false;
+        }
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextHint_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
+            this.sumpoint = point + _userService.GetUserScore();
+            saveScore();
+            _userService.SetUserScore(sumpoint);
             Application.Exit();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+            this.sumpoint = point + _userService.GetUserScore();
+            saveScore();
+            _userService.SetUserScore(sumpoint);
             this.Hide();
             new frmSelectType().Show();
         }
 
      
 
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-            
-          
-        }
+       
 
 
     }

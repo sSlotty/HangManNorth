@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "VotXGov51ZWi8qsgoFmaLRDlRXsAoyn9NFIT/aAaRNQ60ggYCqaENACydy4eugcHI3847mrX7f5/MRNHwVTc1A==",
+  "dgSpecHash": "XStOZqvCzl3c63ZfPyj0DcxYDp2hhWy1Oi0hP++ZIKuZlfmK1FF6/vufXp/k1zU3RSMu06c8nSetRWqg4l883Q==",
   "success": true,
   "projectFilePath": "D:\\Project\\Hangman\\Hangman.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\thanathip\\.nuget\\packages\\jobject\\1.0.0\\jobject.1.0.0.nupkg.sha512",
+    "C:\\Users\\thanathip\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.1\\microsoft.extensions.dependencyinjection.5.0.1.nupkg.sha512",
+    "C:\\Users\\thanathip\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\thanathip\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
     "C:\\Users\\thanathip\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\thanathip\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",

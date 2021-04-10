@@ -111,12 +111,21 @@ namespace Hangman
                         con.Close();
 
                         MessageBox.Show("Success", "Register", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtUsername.Text = "";
+                        txtPassword.Text = "";
+                        txtConfPassoword.Text = "";
+                        this.Hide();
+                        new frmLogin().Show();
+
                         return true;
                     }
 
                 }
                 else
                 {
+                    txtUsername.Text = "";
+                    txtPassword.Text = "";
+                    txtConfPassoword.Text = "";
                     MessageBox.Show("username is already haveing", "Register fail");
                     return false;
                 }

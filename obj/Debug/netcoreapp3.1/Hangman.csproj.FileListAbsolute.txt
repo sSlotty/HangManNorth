@@ -16,7 +16,6 @@ D:\Project\Hangman\obj\Debug\netcoreapp3.1\Hangman.genruntimeconfig.cache
 D:\Project\Hangman\obj\Debug\netcoreapp3.1\Hangman.frmLogin.resources
 D:\Project\Hangman\obj\Debug\netcoreapp3.1\Hangman.frmRegister.resources
 D:\Project\Hangman\obj\Debug\netcoreapp3.1\Hangman.frmSelectType.resources
-D:\Project\Hangman\obj\Debug\netcoreapp3.1\Hangman.playGame.resources
 D:\Project\Hangman\bin\Debug\netcoreapp3.1\Microsoft.Win32.Registry.dll
 D:\Project\Hangman\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
 D:\Project\Hangman\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
@@ -46,3 +45,5 @@ D:\Project\Hangman\obj\Debug\netcoreapp3.1\Hangman.frmHome.resources
 D:\Project\Hangman\obj\Debug\netcoreapp3.1\Hangman.frmRule.resources
 D:\Project\Hangman\obj\Debug\netcoreapp3.1\Hangman.frmScoreTotal.resources
 D:\Project\Hangman\obj\Debug\netcoreapp3.1\Hangman.Properties.Resource1.resources
+D:\Project\Hangman\bin\Debug\netcoreapp3.1\data\data.json
+D:\Project\Hangman\obj\Debug\netcoreapp3.1\Hangman.playGame.resources
