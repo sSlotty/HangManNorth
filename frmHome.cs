@@ -10,6 +10,12 @@ namespace Hangman
 {
     public partial class frmHome : Form
     {
+        /**
+         * create constructor formHome
+         * ทำการ set หน้าจอ ตรงกลาง
+         * และทำการ set backGround color ให้กับปุ่ม ที่มีสีไม่ตรงกับ background
+         * 
+         **/
         public frmHome()
         {
             InitializeComponent();
@@ -28,33 +34,48 @@ namespace Hangman
 
         }
 
+        /*
+         * ปุ่มออกจากแอพ
+         */
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Application.Exit(); // Terminate application
         }
 
+        /*
+        * ปุ่มกลับไปยัง login form
+        */
         private void backBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new frmLogin().Show();
+            new frmLogin().Show(); // new formLogin และทำการ ใช้ method show เพื่อแสดง
         }
 
+        /*
+        * ปุ่ม show formRule
+        */
         private void rultBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new frmRule().Show();
+            new frmRule().Show(); // new formRule และทำการ ใช้ method show เพื่อแสดง
         }
 
+        /*
+        * ปุ่มเลือกชนิดของคำถาม
+        */
         private void playGameBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new frmSelectType().Show();
+            new frmSelectType().Show(); // new selectType และทำการ ใช้ method show เพื่อแสดง
         }
 
+        /*
+        * ปุ่มดู score ทั้งหมดที่มี
+        */
         private void scoreBtn_Click_1(object sender, EventArgs e)
         {
             this.Close();
-            new frmScoreTotal().Show();
+            new frmScoreTotal().Show(); // new formScoretoal และทำการ ใช้ method show เพื่อแสดง
         }
     }
 }

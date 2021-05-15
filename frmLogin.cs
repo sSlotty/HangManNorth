@@ -17,33 +17,27 @@ namespace Hangman
 {
     public partial class frmLogin : Form
     {
+        //create static varible user
         public static string user = "";
+        //create static varible point
         public static int point;
 
-        //string ConnectionString;
 
-        //string execPath = Path.GetDirectoryName(Application.ExecutablePath);
-        //static string[] words = path.Split(@"\");
-        //static string fixpath = words[0] + @"\" + words[1] + @"\" + words[2] + @"\";
-        //string dataSourcePath = Path.Combine(execPath, "db_user.mdb");
-
-        //string ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + fixpath + "db_user.mdb;";
-
+        //create static contance formLogin
         public static frmRegister frmRegister = new frmRegister();
 
         private readonly IUserService _userService;
         private static System.Timers.Timer aTimer;
 
-
-        public frmLogin()
+        /**
+         * create constructor formLogin and set Screen to center
+         **/
+        public frmLogin() 
         {
             _userService = (IUserService)Program.ServiceProvider.GetService(typeof(IUserService));
             InitializeComponent();
             this.CenterToScreen();
 
-            //string execPath = Path.GetDirectoryName(Application.ExecutablePath);
-            //string dataSourcePath = Path.Combine(execPath, "db_user.mdb");
-            //ConnectionString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={dataSourcePath};";
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -51,6 +45,9 @@ namespace Hangman
 
         }
 
+        /**
+        * ตั้งค่า ปั่ม loginและทำการ ส่ง ข้อมูลไปยัง function login และนำ result กลัยมาเช๋็ค condition หากสำเร็จจะสามารถเข้า formHome ได้
+        **/
         private void pictureBox5_Click(object sender, EventArgs e)
         {
             // Function Login
@@ -72,30 +69,33 @@ namespace Hangman
             }
         }
 
+        /**
+        * function Login หากทำการ Login สำเร็จ จะ return ค่า ออกไปเป็น boolean 
+        **/
         private bool login(string username, string password)
         {
             try
             {
-                using (OleDbConnection con = new OleDbConnection(Variable.ConnectionString))
+                using (OleDbConnection con = new OleDbConnection(Variable.ConnectionString)) //create new OleDBConnect โดย ได้ดึง viriable.ConnectionString มาใช้งาน
                 {
-                    con.Open();
-                    var sql = $"SELECT [ID], [username],[password],[point] FROM [tbl_users] WHERE username=?";
-                    var cmd = new OleDbCommand(sql, con);
-                    cmd.Parameters.Add("?", OleDbType.VarChar).Value = username;
+                    con.Open(); //open connection
+                    var sql = $"SELECT [ID], [username],[password],[point] FROM [tbl_users] WHERE username=?"; //sql command
+                    var cmd = new OleDbCommand(sql, con); // new Obj OleDbCommand โดยได้ส่ง  string sql และ connection
+                    cmd.Parameters.Add("?", OleDbType.VarChar).Value = username; //ใส่ parameter โดย ใช้ string "?" = username หา ข้อมูล ใน database ที่ชื่อตรงกัน 
 
-                    var reader = cmd.ExecuteReader();
-                    while (reader.Read())
+                    var reader = cmd.ExecuteReader();  //ทำการ excute command
+                    while (reader.Read()) // ทำการอ่าน ข้อมูลที่  response กลับมา
                     {
-                        var usernameRes = reader.GetString(1);
-                        var passwordRes = reader.GetString(2);
-                        var point = reader.GetInt32(3);
-                        
-                        if (username == usernameRes && password == passwordRes)
-                        {
-                            _userService.SetUsername(username);
-                            _userService.SetUserScore(point);
+                        var usernameRes = reader.GetString(1); //ดึงข้อมูลภายใน obj ตัวที่  1 คือ username
+                        var passwordRes = reader.GetString(2); //ดึงข้อมูลภายใน obj ตัวที่  2 คือ password
+                        var point = reader.GetInt32(3); //ดึงข้อมูลภายใน obj ตัวที่  3 คือ point
 
-                            return true;
+                        if (username == usernameRes && password == passwordRes) // check connection username and password หาก มีค่าตรงกัน ก็จะทำการ set ค่า ให้กับ username 
+                        {
+                            _userService.SetUsername(username); //set username
+                            _userService.SetUserScore(point); // set point
+
+                            return true; 
                         }
                         else
                         {
@@ -103,14 +103,14 @@ namespace Hangman
                             return false;
                         }
                     }
-                    reader.Close();
+                    reader.Close(); 
                     cmd.Dispose();
                     con.Close();
                    
                 }
 
             }
-            catch (Exception e)
+            catch (Exception e) // กรณีเกิด Exception จะทำการแสดง exception
             {
                 Console.WriteLine(e);
                 MessageBox.Show(e.ToString());
@@ -147,12 +147,17 @@ namespace Hangman
 
         }
 
-
+        /**
+         * ปิด application
+         **/
         private void pictureBox3_Click_2(object sender, EventArgs e)
         {
             System.Environment.Exit(0);
         }
 
+        /**
+         * Open form register
+         **/
         private void pictureBox2_Click_1(object sender, EventArgs e)
         {
             this.Hide();

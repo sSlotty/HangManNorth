@@ -11,7 +11,15 @@ namespace Hangman
 {
     public partial class frmScoreTotal : Form
     {
+        //create varible _userService by IUserService
         private readonly IUserService _userService;
+
+        /**
+         * create constructor frmScoreTotal
+         * ทำการ set หน้าจอ ตรงกลาง
+         * ทำการดึงข้อมูลจาก score จาก service และทำการ set text หน้า score ให้ตรงกับ score ที่อยู่ภายใน class IUserService
+         * 
+         **/
         public frmScoreTotal()
         {
             InitializeComponent();
@@ -22,15 +30,21 @@ namespace Hangman
          
         }
 
+        /*
+         * ปุ่มกลับไปยัง formLogin
+        */
         private void backBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new frmHome().Show();
+            new frmHome().Show(); // new formHome และทำการ ใช้ method show เพื่อแสดง
         }
 
+        /*
+         * ปุ่มออกจากแอพ
+         */
         private void exitBtn_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Application.Exit(); // Terminate application
         }
 
         private void TextScore_Click(object sender, EventArgs e)

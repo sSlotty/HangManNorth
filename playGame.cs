@@ -19,27 +19,29 @@ namespace Hangman
     {
 
 
-        //static string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
-        //static string[] words = path.Split(@"\");
-        //static string fixpath = words[0] + @"\" + words[1] + @"\" + words[2] + @"\";
+     
 
-        //string ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + fixpath + "db_user.mdb;";
+        public List<string> allQuestion; //create List allQuestion
+        public List<string> allAnswer; //create List allAnswer
 
-        public List<string> allQuestion;
-        public List<string> allAnswer;
-
-        private List<int> questionSuffer;
-        private readonly int QUESTION_NUM = 10;
+        private List<int> questionSuffer; //create list questionSuffer
+        private readonly int QUESTION_NUM = 10; // create int varible QUESTION_NUM
 
         private int round = 0;
         private int sumpoint ,question_num= 0;
         private int point = 0;
-        int time = 60;
+     
         bool gameOver = false;
 
         private string answser,hint;
 
         private readonly IUserService _userService;
+
+        /**
+         * create constructor formPlayGame and set Screen to center
+         * _useService เรียกใช้ service IUserSercice
+         * ทำการ resetGuman และ startGame
+         **/
         public playGame()
         {
             _userService = (IUserService)Program.ServiceProvider.GetService(typeof(IUserService));
@@ -54,13 +56,14 @@ namespace Hangman
         }
         private void startGame()
         {
-            
+            // กรณีถ้า GameOver = true MessageBox
             if (!gameOver)
             {
-                if(question_num <= 9)
+                // กรณีถ้า คำถามหมดแล้วจะ show MessageBox และทำการ terminate ออกจาก application
+                if (question_num <= 9)
                 {
-                    sufferQuestion();
-                    if (round < 6)
+                    sufferQuestion(); //สุ่มคำถาม
+                    if (round < 6) // กรณีตอบคำถามผิด น้อยกว่า 6 จะใหแสดงคำถาม ถ้ามากกว่า 6 จะ แสดง MessageBox
                     {
                         TextHint.Text = hint;
                         
@@ -71,6 +74,7 @@ namespace Hangman
 
                         MessageBox.Show("Game Over your score : " + this.sumpoint.ToString());
                         saveScore();
+                        _userService.SetUserScore(sumpoint);
                         this.Close();
                         new frmHome().Show();
                         
@@ -80,6 +84,7 @@ namespace Hangman
                 {
                     MessageBox.Show("End game your score : " + this.sumpoint.ToString());
                     saveScore();
+                    _userService.SetUserScore(sumpoint);
                     this.Close();
                     new frmHome().Show();
               
@@ -89,6 +94,7 @@ namespace Hangman
             else
             {
                 saveScore();
+                _userService.SetUserScore(sumpoint);
                 this.Close();
                 MessageBox.Show("Game Over your score : " + this.sumpoint.ToString());
                 new frmHome().Show();
@@ -98,6 +104,10 @@ namespace Hangman
 
         }
 
+        /*
+         * สุ่มคำถาม 
+         * โดยใช้ Random ทุกครั้ง ถ้าคำถามไหนโดนถามไปแล้ว ถูกลบ Question จะทำให้ไม่สุ่มคำถามเดิมมาถามอีกครั้ง
+         */
         public void sufferQuestion()
         {
             var rand = new Random();
@@ -111,29 +121,38 @@ namespace Hangman
         }
 
 
+        /*
+         * read JsonFile 
+         */
         private void JsonReadQuestion(string type)
         {
-            allQuestion = new List<string>();
-            allAnswer = new List<string>();
-            
-            questionSuffer = new List<int>();
+            allQuestion = new List<string>(); //craere new List of String 
+            allAnswer = new List<string>(); //craere new List of String 
 
-            var jsonFile = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\data\data.json";
-            var jsonString = File.ReadAllText(jsonFile);
-            
-            var data = JObject.Parse(jsonString);
+            questionSuffer = new List<int>(); //craere new List of int 
 
-            for(int i = 0; i < QUESTION_NUM; i++)
+            var jsonFile = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\data\data.json"; //ทำการ  getDirectory ล่าสุดและเข้าไป select data.json
+            var jsonString = File.ReadAllText(jsonFile); // read file json
+            
+            var data = JObject.Parse(jsonString); //ทำให้อยู่ใน รูปแบบ ของ jsonObject
+
+            for(int i = 0; i < QUESTION_NUM; i++) 
             {
-                allQuestion.Add(data[type][i]["hint"].ToString());
-                allAnswer.Add(data[type][i]["answer"].ToString());
+                allQuestion.Add(data[type][i]["hint"].ToString()); // add value to List allQuestion
+                allAnswer.Add(data[type][i]["answer"].ToString()); // add value to list allAnswer
             }
             
              
         }
 
      
-
+        /// <summary>
+        /// button submit answer
+        /// หากจำนวนรอบ การ count < 7 จะสามารถกดส่งคำตอบได้
+        /// กรณีหากไม่ มากกว่า 7 score จะถูก save และ terminate กลับไปยังหน้า home
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void submitBox_Click(object sender, EventArgs e)
         {
             if(this.round < 7)
@@ -155,6 +174,13 @@ namespace Hangman
 
             }
         }
+
+        /// <summary>
+        /// กรณีถ้าตำตอบตรง 
+        /// จะทำการ StartGame อีกครั้ง และทำการ reset หุ่น
+        /// และหากถ้า ตอบผิดไปเรื่อยๆ จะทำการ show รูป จนตาย และ gameOver = true
+        /// </summary>
+        /// <param name="ans">คำตอบของคำถามนั้นๆ</param>
 
         public void checkAnswer(string ans)
         {
@@ -200,6 +226,7 @@ namespace Hangman
                     case 7:
                         pic6.Visible = false;
                         pic7.Visible = true;
+                        gameOver = true;
                         break;
                 }
 
@@ -207,6 +234,10 @@ namespace Hangman
    
           }
 
+        /// <summary>
+        /// open coonection database 
+        /// และทำการ set point  = sumpoint โดย ที่ username = username และ ทำการ Execute และ ทำการ closeConnection 
+        /// </summary>
         private void saveScore()
         {
             try
@@ -236,6 +267,9 @@ namespace Hangman
 
         }
 
+        /// <summary>
+        /// retset human set all pic.Visivle = false
+        /// </summary>
         public void resetHuman()
         {
             pic1.Visible = false;
@@ -260,7 +294,8 @@ namespace Hangman
         {
 
         }
-
+        
+        // ปุ่ม ออกจากแอพ จะทำการ seve score และทำการ set socre 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             this.sumpoint = point + _userService.GetUserScore();
@@ -269,6 +304,7 @@ namespace Hangman
             Application.Exit();
         }
 
+        // ปุ่ม กลับไปยังหน้าเลือก type จะทำการ seve score และทำการ set socre 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.sumpoint = point + _userService.GetUserScore();
@@ -280,8 +316,6 @@ namespace Hangman
 
      
 
-       
-
-
+  
     }
 }
