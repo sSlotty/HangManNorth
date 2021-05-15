@@ -11,6 +11,13 @@ namespace Hangman
     public partial class frmSelectType : Form
     {
         public static string type;
+
+        /**
+         * create constructor formHome
+         * ทำการ set หน้าจอ ตรงกลาง
+         * และทำการ set backGround color ให้กับปุ่ม ที่มีสีไม่ตรงกับ background
+         * 
+         **/
         public frmSelectType()
         {
             InitializeComponent();
@@ -24,6 +31,12 @@ namespace Hangman
             type = "";
         }
 
+        /*
+         * 
+         * Button travel
+         * type = travel
+         * 
+         */
         private void travel_Click(object sender, EventArgs e)
         {
             type = "travel";
@@ -31,6 +44,12 @@ namespace Hangman
             new playGame().Show();
         }
 
+        /*
+         * 
+         * Button language
+         * type = language
+         * 
+         */
         private void language_Click(object sender, EventArgs e)
         {
             type = "language";
@@ -39,6 +58,12 @@ namespace Hangman
 
         }
 
+        /*
+         * 
+         * Button food
+         * type = food
+         * 
+         */
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             type = "food";
@@ -47,6 +72,12 @@ namespace Hangman
 
         }
 
+        /*
+         * 
+         * Button culture
+         * type = culture
+         * 
+         */
         private void culture_Click(object sender, EventArgs e)
         {
             type = "culture";
@@ -65,9 +96,12 @@ namespace Hangman
 
         }
 
+        /*
+         * ปุ่มออกจากแอพ
+         */
         private void exitBtn_Click(object sender, EventArgs e)
         {
-            System.Environment.Exit(0);
+            System.Environment.Exit(0); //terninate application
         }
 
         private void backBtn_Click(object sender, EventArgs e)

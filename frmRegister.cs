@@ -154,8 +154,10 @@ namespace Hangman
             {
                 if (!(string.IsNullOrEmpty(txtPassword.Text) || string.IsNullOrEmpty(txtConfPassoword.Text)))
                 {
-                    if((string.IsNullOrEmpty(txtPassword.Text) == string.IsNullOrEmpty(txtConfPassoword.Text)){
+                    if(string.IsNullOrEmpty(txtPassword.Text) == string.IsNullOrEmpty(txtConfPassoword.Text)){
+
                         var reg = Register(txtUsername.Text, txtPassword.Text);
+
                         if (reg)
                         {
                             //Show alert success
