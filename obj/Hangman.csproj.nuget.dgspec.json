@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Hangman\\Hangman.csproj": {}
+    "D:\\Program Files\\procect C#\\HangManNorth\\Hangman.csproj": {}
   },
   "projects": {
-    "D:\\Hangman\\Hangman.csproj": {
+    "D:\\Program Files\\procect C#\\HangManNorth\\Hangman.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Hangman\\Hangman.csproj",
+        "projectUniqueName": "D:\\Program Files\\procect C#\\HangManNorth\\Hangman.csproj",
         "projectName": "Hangman",
-        "projectPath": "D:\\Hangman\\Hangman.csproj",
-        "packagesPath": "C:\\Users\\thanathip\\.nuget\\packages\\",
-        "outputPath": "D:\\Hangman\\obj\\",
+        "projectPath": "D:\\Program Files\\procect C#\\HangManNorth\\Hangman.csproj",
+        "packagesPath": "C:\\Users\\NOT\\.nuget\\packages\\",
+        "outputPath": "D:\\Program Files\\procect C#\\HangManNorth\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\thanathip\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\NOT\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -75,7 +75,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
