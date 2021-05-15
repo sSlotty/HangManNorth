@@ -1,4 +1,4 @@
-using Hangman.Services;
+﻿using Hangman.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -25,10 +25,12 @@ namespace Hangman
             [STAThread]
         static void Main()
         {
+
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             ConfigureServices();
+            //สั่งให้ Application run form login
             Application.Run(new frmLogin());
             
         }
