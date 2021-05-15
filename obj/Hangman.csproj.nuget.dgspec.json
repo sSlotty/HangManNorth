@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Project\\Hangman\\Hangman.csproj": {}
+    "D:\\Hangman\\Hangman.csproj": {}
   },
   "projects": {
-    "D:\\Project\\Hangman\\Hangman.csproj": {
+    "D:\\Hangman\\Hangman.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\Hangman\\Hangman.csproj",
+        "projectUniqueName": "D:\\Hangman\\Hangman.csproj",
         "projectName": "Hangman",
-        "projectPath": "D:\\Project\\Hangman\\Hangman.csproj",
+        "projectPath": "D:\\Hangman\\Hangman.csproj",
         "packagesPath": "C:\\Users\\thanathip\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\Hangman\\obj\\",
+        "outputPath": "D:\\Hangman\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\thanathip\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Data.OleDb;
 using Hangman.Services;
+using Hangman.Constants;
 
 namespace Hangman
 {
@@ -18,11 +19,11 @@ namespace Hangman
     {
 
 
-        static string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
-        static string[] words = path.Split(@"\");
-        static string fixpath = words[0] + @"\" + words[1] + @"\" + words[2] + @"\";
+        //static string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+        //static string[] words = path.Split(@"\");
+        //static string fixpath = words[0] + @"\" + words[1] + @"\" + words[2] + @"\";
 
-        string ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + fixpath + "db_user.mdb;";
+        //string ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + fixpath + "db_user.mdb;";
 
         public List<string> allQuestion;
         public List<string> allAnswer;
@@ -212,7 +213,7 @@ namespace Hangman
             {
 
 
-                using (OleDbConnection con = new OleDbConnection(ConnectionString))
+                using (OleDbConnection con = new OleDbConnection(Variable.ConnectionString))
                 {
                     con.Open();
                     var sql = $"UPDATE [tbl_users] SET point = @point WHERE username= @username";

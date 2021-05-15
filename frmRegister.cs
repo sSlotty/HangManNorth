@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using Hangman.Extension;
 using System.Data.OleDb;
-
+using Hangman.Constants;
 
 namespace Hangman
 {
@@ -16,11 +16,11 @@ namespace Hangman
         //OleDbConnection con;
         //OleDbCommand cmd;
         //OleDbDataAdapter da;
-        static string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
-        static string[] words = path.Split(@"\");
-        static string fixpath = words[0] + @"\" + words[1] + @"\" + words[2] + @"\";
+        //static string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
+        //static string[] words = path.Split(@"\");
+        //static string fixpath = words[0] + @"\" + words[1] + @"\" + words[2] + @"\";
 
-        string ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source="+ fixpath +"db_user.mdb;";
+        //string ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source="+ fixpath +"db_user.mdb;";
 
    
 
@@ -79,7 +79,7 @@ namespace Hangman
 
                 if (!checkUsernameExits(username))
                 {
-                    using (OleDbConnection con = new OleDbConnection(ConnectionString))
+                    using (OleDbConnection con = new OleDbConnection(Variable.ConnectionString))
                     {
                         con.Open();
 
@@ -172,7 +172,7 @@ namespace Hangman
             {
 
                 
-                using (OleDbConnection con = new OleDbConnection(ConnectionString))
+                using (OleDbConnection con = new OleDbConnection(Variable.ConnectionString))
                 {
                     con.Open();
                     var sql = $"SELECT [ID], [username] FROM [tbl_users] WHERE username=?";

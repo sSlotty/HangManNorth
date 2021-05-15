@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Data.OleDb;
 using Hangman.Extension;
 using Hangman.Services;
+using System.IO;
+using Hangman.Constants;
 
 namespace Hangman
 {
@@ -18,11 +20,14 @@ namespace Hangman
         public static string user = "";
         public static int point;
 
-        static string path = System.IO.Path.GetDirectoryName(Application.ExecutablePath);
-        static string[] words = path.Split(@"\");
-        static string fixpath = words[0] + @"\" + words[1] + @"\" + words[2] + @"\";
+        //string ConnectionString;
 
-        string ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + fixpath + "db_user.mdb;";
+        //string execPath = Path.GetDirectoryName(Application.ExecutablePath);
+        //static string[] words = path.Split(@"\");
+        //static string fixpath = words[0] + @"\" + words[1] + @"\" + words[2] + @"\";
+        //string dataSourcePath = Path.Combine(execPath, "db_user.mdb");
+
+        //string ConnectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + fixpath + "db_user.mdb;";
 
         public static frmRegister frmRegister = new frmRegister();
 
@@ -36,6 +41,9 @@ namespace Hangman
             InitializeComponent();
             this.CenterToScreen();
 
+            //string execPath = Path.GetDirectoryName(Application.ExecutablePath);
+            //string dataSourcePath = Path.Combine(execPath, "db_user.mdb");
+            //ConnectionString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={dataSourcePath};";
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -68,7 +76,7 @@ namespace Hangman
         {
             try
             {
-                using (OleDbConnection con = new OleDbConnection(ConnectionString))
+                using (OleDbConnection con = new OleDbConnection(Variable.ConnectionString))
                 {
                     con.Open();
                     var sql = $"SELECT [ID], [username],[password],[point] FROM [tbl_users] WHERE username=?";
